@@ -42,4 +42,4 @@ temp/
 # Optional: lockfiles (be intentional)
 # package-lock.json
 # yarn.lock
-# pnpm-lock.yaml
+# pnpm-lock.yamlnode_modules/
