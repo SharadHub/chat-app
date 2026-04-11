@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const generateToken = require("../utils/generateToken");
 
 exports.register = async (req, res) => {
   try {
@@ -20,6 +21,7 @@ exports.register = async (req, res) => {
       _id: user._id,
       username: user.username,
       email: user.email,
+      token: generateToken(user._id)
     });
   } catch (error) {
     res.status(500).json({ error: "Server is not responding" });
