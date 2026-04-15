@@ -44,3 +44,6 @@ temp/
 # yarn.lock
 # pnpm-lock.yamlnode_modules/
 
+# Shell scripts
+*.sh
+
