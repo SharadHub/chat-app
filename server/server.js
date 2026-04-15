@@ -1,21 +1,19 @@
 import express from "express";
+import http from 'http';
+import initSocket from "./socket/index.js";
 import cors from "cors";
 import dotenv from "dotenv";
-
-// importing db.js
-const connectDB = require('./config/db');
-
-// import from routes
-const messageRoutes = require('./routes/messageRoutes');
-
-// import from routes
-const authRoute = require('./routes/authRoute');
+import connectDB from './config/db.js';
+import messageRoutes from './routes/messageRoutes.js';
+import authRoute from './routes/authRoute.js';
 
 dotenv.config();
 
 const app = express();
+const server = http.createServer(app);
 
-// run the execution function.
+initSocket(server);
+
 connectDB();
 
 app.use(cors());
@@ -29,6 +27,6 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is running in port ${PORT}...`);
 })
